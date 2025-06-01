@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
-interface SEOHelmetProps {
+interface SEOProps {
   title?: string;
   description?: string;
   keywords?: string;
@@ -8,10 +8,9 @@ interface SEOHelmetProps {
   ogDescription?: string;
   ogImage?: string;
   canonicalUrl?: string;
-  structuredData?: object;
 }
 
-const SEOHelmet: React.FC<SEOHelmetProps> = ({
+const SEO: React.FC<SEOProps> = ({
   title = "Amoza Tegels - Professional Tile Installation Services in Netherlands",
   description = "Premier tile installation company specializing in precision craftsmanship and superior quality workmanship. Professional tile installation services with expert craftsmanship in Netherlands.",
   keywords = "tile installation, tegels, Netherlands, professional tiling, bathroom tiles, kitchen tiles, floor tiles, wall tiles, ceramic tiles, porcelain tiles, tile contractor, tile services",
@@ -19,36 +18,78 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
   ogDescription,
   ogImage = "/images/logo.png",
   canonicalUrl = "https://amoza-tegels.nl/",
-  structuredData,
 }) => {
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+  useEffect(() => {
+    // Set document title
+    document.title = title;
 
-      {/* Open Graph */}
-      <meta property="og:title" content={ogTitle || title} />
-      <meta property="og:description" content={ogDescription || description} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:url" content={canonicalUrl} />
+    // Helper function to set or update meta tags
+    const setMetaTag = (name: string, content: string, property?: boolean) => {
+      const selector = property
+        ? `meta[property="${name}"]`
+        : `meta[name="${name}"]`;
+      let meta = document.querySelector(selector) as HTMLMetaElement;
 
-      {/* Twitter */}
-      <meta name="twitter:title" content={ogTitle || title} />
-      <meta name="twitter:description" content={ogDescription || description} />
-      <meta name="twitter:image" content={ogImage} />
+      if (!meta) {
+        meta = document.createElement("meta");
+        if (property) {
+          meta.setAttribute("property", name);
+        } else {
+          meta.setAttribute("name", name);
+        }
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
 
-      {/* Canonical */}
-      <link rel="canonical" href={canonicalUrl} />
+    // Helper function to set canonical URL
+    const setCanonicalUrl = (url: string) => {
+      let canonical = document.querySelector(
+        'link[rel="canonical"]'
+      ) as HTMLLinkElement;
 
-      {/* Structured Data */}
-      {structuredData && (
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      )}
-    </Helmet>
-  );
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.setAttribute("rel", "canonical");
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute("href", url);
+    };
+
+    // Set meta tags
+    setMetaTag("description", description);
+    setMetaTag("keywords", keywords);
+
+    // Open Graph tags
+    setMetaTag("og:title", ogTitle || title, true);
+    setMetaTag("og:description", ogDescription || description, true);
+    setMetaTag("og:image", ogImage, true);
+    setMetaTag("og:url", canonicalUrl, true);
+
+    // Twitter tags
+    setMetaTag("twitter:title", ogTitle || title);
+    setMetaTag("twitter:description", ogDescription || description);
+    setMetaTag("twitter:image", ogImage);
+
+    // Set canonical URL
+    setCanonicalUrl(canonicalUrl);
+
+    // Cleanup function to reset title when component unmounts
+    return () => {
+      document.title = "Amoza Tegels";
+    };
+  }, [
+    title,
+    description,
+    keywords,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    canonicalUrl,
+  ]);
+
+  // This component doesn't render anything
+  return null;
 };
 
-export default SEOHelmet;
+export default SEO;

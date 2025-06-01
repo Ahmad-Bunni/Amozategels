@@ -1,20 +1,6 @@
 import SEOHelmet from "../../common/SEOHelmet";
 
 function Quote() {
-  const quoteStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Get a Quote - Contact Amoza Tegels for Tile Installation",
-    description:
-      "Contact Amoza Tegels for a free quote on professional tile installation services. Available daily 10:00 AM - 10:00 PM. Call +31610221441 or WhatsApp.",
-    url: "https://amoza-tegels.nl/quote",
-    mainEntity: {
-      "@type": "ContactPage",
-      name: "Contact Amoza Tegels",
-      description: "Get in touch for professional tile installation services",
-    },
-  };
-
   return (
     <>
       <SEOHelmet
@@ -22,7 +8,6 @@ function Quote() {
         description="Contact Amoza Tegels for a free quote on professional tile installation services in Netherlands. Available daily 10:00 AM - 10:00 PM. Call +31610221441 or WhatsApp us."
         keywords="tile installation quote, contact tile contractor, free estimate Netherlands, bathroom tile quote, kitchen tile installation cost, professional tiling quote"
         canonicalUrl="https://amoza-tegels.nl/quote"
-        structuredData={quoteStructuredData}
       />
 
       <div className="container mx-auto p-4 flex justify-center">

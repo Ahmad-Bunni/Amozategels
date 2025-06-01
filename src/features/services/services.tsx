@@ -17,21 +17,6 @@ function Services() {
     setSelectedImage(null);
   };
 
-  const servicesStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Our Work - Tile Installation Portfolio | Amoza Tegels",
-    description:
-      "View our portfolio of professional tile installation projects. High-quality bathroom, kitchen, and floor tile installations in Netherlands.",
-    url: "https://amoza-tegels.nl/services",
-    mainEntity: {
-      "@type": "ImageGallery",
-      name: "Tile Installation Portfolio",
-      description:
-        "Professional tile installation work gallery showcasing bathroom, kitchen, and floor projects",
-    },
-  };
-
   return (
     <>
       <SEOHelmet
@@ -39,10 +24,9 @@ function Services() {
         description="View our portfolio of professional tile installation projects. High-quality bathroom, kitchen, and floor tile installations showcasing precision craftsmanship in Netherlands."
         keywords="tile installation portfolio, bathroom tiles Netherlands, kitchen tiles, floor tiles, ceramic tiles, porcelain tiles, tile work gallery, professional tiling examples"
         canonicalUrl="https://amoza-tegels.nl/services"
-        structuredData={servicesStructuredData}
       />
 
-      <div className="p-24 h-full bg-gray-50 opacity-80 rounded-lg w-full overflow-y-auto">
+      <div className="p-16 h-full bg-gray-50 opacity-80 rounded-lg w-full overflow-y-auto">
         <header className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-cyan-800 mb-4">
             Our Professional Work

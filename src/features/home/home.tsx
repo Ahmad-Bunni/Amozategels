@@ -17,27 +17,6 @@ function Home() {
     };
   }, []);
 
-  const homeStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Amoza Tegels - Professional Tile Installation Services",
-    description:
-      "Premier tile installation company specializing in precision craftsmanship and superior quality workmanship in Netherlands.",
-    url: "https://amoza-tegels.nl/",
-    mainEntity: {
-      "@type": "LocalBusiness",
-      name: "Amoza Tegels",
-      description:
-        "Premier tile installation company specializing in precision craftsmanship and superior quality workmanship",
-      telephone: "+31610221441",
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "NL",
-      },
-      openingHours: "Mo-Su 10:00-22:00",
-    },
-  };
-
   return (
     <>
       <SEOHelmet
@@ -45,7 +24,6 @@ function Home() {
         description="Premier tile installation company specializing in precision craftsmanship and superior quality workmanship. Expert tile installation services for bathrooms, kitchens, and floors in Netherlands."
         keywords="tile installation Netherlands, professional tiling, bathroom tiles, kitchen tiles, floor tiles, wall tiles, ceramic tiles, porcelain tiles, tile contractor Netherlands, tegels installatie"
         canonicalUrl="https://amoza-tegels.nl/"
-        structuredData={homeStructuredData}
       />
 
       <div className="flex flex-col justify-center h-full">
