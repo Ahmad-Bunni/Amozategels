@@ -39,7 +39,7 @@ function Services() {
         </header>
 
         <div
-          className="flex flex-wrap gap-16 justify-center items-center mb-8"
+          className="flex flex-wrap gap-16 justify-center items-center mb-16"
           role="img"
           aria-label="Tile installation portfolio gallery"
         >
