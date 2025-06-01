@@ -26,7 +26,7 @@ function Services() {
         canonicalUrl="https://amoza-tegels.nl/services"
       />
 
-      <div className="p-16 h-full bg-gray-50 opacity-80 rounded-lg w-full overflow-y-auto">
+      <div className="pb-32 pt-8 h-full bg-gray-50 opacity-90 rounded-lg w-full overflow-y-auto">
         <header className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-cyan-800 mb-4">
             Our Professional Work
